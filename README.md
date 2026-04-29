@@ -5,6 +5,7 @@ A B2B Healthcare SaaS UI application built with Next.js, demonstrating frontend 
 ## Features
 
 ### Core Features
+
 - **Authentication**: Firebase Authentication with email/password login, validation, error handling, and session management
 - **Dashboard**: Overview with patient statistics, recent activity, and performance metrics
 - **Patient Management**: Grid/List view toggle, search, and status filtering
@@ -12,6 +13,7 @@ A B2B Healthcare SaaS UI application built with Next.js, demonstrating frontend 
 - **Notifications**: Service Worker integration with push/local notification support
 
 ### Technical Highlights
+
 - **State Management**: Zustand for lightweight, efficient global state
 - **Form Handling**: react-hook-form with Zod validation
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
@@ -33,6 +35,7 @@ A B2B Healthcare SaaS UI application built with Next.js, demonstrating frontend 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - Firebase account
@@ -40,12 +43,14 @@ A B2B Healthcare SaaS UI application built with Next.js, demonstrating frontend 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd raga-ai-healthcare
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
@@ -57,11 +62,13 @@ npm install
    - Create a web app and copy the configuration
 
 4. Configure environment variables:
+
 ```bash
 cp .env.example .env.local
 ```
 
 Edit `.env.local` with your Firebase credentials:
+
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
@@ -77,15 +84,12 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
    - Enter email and password
 
 6. Run the development server:
+
 ```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
-
-## Passkey
-email-id:tester@email.com
-passcode:test@123
 
 ## Project Structure
 
@@ -123,24 +127,28 @@ npm run lint     # Run ESLint
 ## Features Walkthrough
 
 ### Authentication
+
 - Secure login with Firebase Authentication
 - Form validation with real-time error feedback
 - Session persistence across browser refreshes
 - Protected routes with automatic redirects
 
 ### Patient Details
+
 - Toggle between Grid and List views
 - Search patients by name, condition, or email
 - Filter by status (Active, Critical, Discharged)
 - Responsive design for all screen sizes
 
 ### Analytics
+
 - Patient trend line charts
 - Monthly appointment bar charts
 - Condition distribution pie charts
 - Key performance metrics
 
 ### Notifications
+
 - Browser notification permission handling
 - Welcome notification on login
 - Test notification in settings

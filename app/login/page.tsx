@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Heart, Mail, Lock, AlertCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { useAuthStore } from '@/stores/auth-store';
-import { useNotificationStore } from '@/stores/notification-store';
-import { loginSchema, type LoginSchema } from '@/lib/validations';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Heart, Mail, Lock, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { useAuthStore } from "@/stores/auth-store";
+import { useNotificationStore } from "@/stores/notification-store";
+import { loginSchema, type LoginSchema } from "@/lib/validations";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -29,7 +29,11 @@ export default function LoginPage() {
   const sendNotification = useNotificationStore((s) => s.sendNotification);
   const checkSupport = useNotificationStore((s) => s.checkSupport);
 
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginSchema>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
 
@@ -41,7 +45,7 @@ export default function LoginPage() {
 
   // redirect if logged in
   useEffect(() => {
-    if (isAuthenticated) router.replace('/dashboard');
+    if (isAuthenticated) router.replace("/dashboard");
   }, [isAuthenticated]);
 
   // auto hide error after 5s
@@ -60,8 +64,10 @@ export default function LoginPage() {
       await login(data.email, data.password);
       // try to get notification permission
       await requestPermission();
-      sendNotification('Welcome back!', { body: 'You have successfully logged in' });
-      router.push('/dashboard');
+      sendNotification("Welcome back!", {
+        body: "You have successfully logged in",
+      });
+      router.push("/dashboard");
     } catch {
       // error handled in store
     }
@@ -75,8 +81,12 @@ export default function LoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 mb-4">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Healthcare SaaS</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Healthcare SaaS
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
+            Sign in to your account
+          </p>
         </div>
 
         <Card variant="elevated" className="shadow-xl">
@@ -93,7 +103,7 @@ export default function LoginPage() {
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
-                  {...register('email')}
+                  {...register("email")}
                   type="email"
                   placeholder="Email address"
                   error={errors.email?.message}
@@ -105,7 +115,7 @@ export default function LoginPage() {
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <Input
-                  {...register('password')}
+                  {...register("password")}
                   type="password"
                   placeholder="Password"
                   error={errors.password?.message}
@@ -114,18 +124,27 @@ export default function LoginPage() {
                 />
               </div>
 
-              <Button type="submit" className="w-full" size="lg" isLoading={isLoading}>
+              <Button
+                type="submit"
+                className="w-full"
+                size="lg"
+                isLoading={isLoading}
+              >
                 Sign in
               </Button>
             </form>
 
             <div className="mt-6 text-center text-sm text-gray-500">
-              <p>Demo: Use your Firebase test account</p>
+              <p>
+                Demo: email-id:tester@email.com <br /> passcode:test@123
+              </p>
             </div>
           </CardContent>
         </Card>
 
-        <p className="text-center text-sm text-gray-500 mt-8">B2B Healthcare SaaS Platform</p>
+        <p className="text-center text-sm text-gray-500 mt-8">
+          B2B Healthcare SaaS Platform
+        </p>
       </div>
     </div>
   );
