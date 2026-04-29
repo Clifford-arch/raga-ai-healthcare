@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Healthcare SaaS - Patient Management Platform
+
+A B2B Healthcare SaaS UI application built with Next.js, demonstrating frontend development skills, architecture thinking, and real-world application patterns.
+
+## Features
+
+### Core Features
+- **Authentication**: Firebase Authentication with email/password login, validation, error handling, and session management
+- **Dashboard**: Overview with patient statistics, recent activity, and performance metrics
+- **Patient Management**: Grid/List view toggle, search, and status filtering
+- **Analytics**: Interactive charts showing patient trends, appointments, and condition distribution
+- **Notifications**: Service Worker integration with push/local notification support
+
+### Technical Highlights
+- **State Management**: Zustand for lightweight, efficient global state
+- **Form Handling**: react-hook-form with Zod validation
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Type Safety**: Full TypeScript implementation with strict mode
+- **Charts**: Recharts for data visualization
+- **PWA Ready**: Service Worker and Web App Manifest configured
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **State Management**: Zustand
+- **Authentication**: Firebase
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Form Validation**: react-hook-form + Zod
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Firebase account
 
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd raga-ai-healthcare
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up Firebase:
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project
+   - Enable Email/Password authentication
+   - Create a web app and copy the configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Configure environment variables:
+```bash
+cp .env.example .env.local
+```
 
-## Learn More
+Edit `.env.local` with your Firebase credentials:
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. Create a test user in Firebase Console:
+   - Go to Authentication > Users
+   - Click "Add user"
+   - Enter email and password
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. Run the development server:
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── dashboard/          # Protected dashboard routes
+│   │   ├── analytics/      # Analytics page
+│   │   ├── patients/       # Patient management page
+│   │   └── settings/       # Settings page
+│   └── login/              # Login page
+├── components/
+│   ├── analytics/          # Chart components
+│   ├── layout/             # Layout components (Sidebar, Header)
+│   ├── patients/           # Patient view components
+│   ├── providers/          # App providers
+│   └── ui/                 # Reusable UI primitives
+├── data/                   # Mock data
+├── hooks/                  # Custom React hooks
+├── lib/
+│   └── firebase/           # Firebase configuration
+├── stores/                 # Zustand state stores
+└── types/                  # TypeScript type definitions
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Available Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+## Features Walkthrough
+
+### Authentication
+- Secure login with Firebase Authentication
+- Form validation with real-time error feedback
+- Session persistence across browser refreshes
+- Protected routes with automatic redirects
+
+### Patient Details
+- Toggle between Grid and List views
+- Search patients by name, condition, or email
+- Filter by status (Active, Critical, Discharged)
+- Responsive design for all screen sizes
+
+### Analytics
+- Patient trend line charts
+- Monthly appointment bar charts
+- Condition distribution pie charts
+- Key performance metrics
+
+### Notifications
+- Browser notification permission handling
+- Welcome notification on login
+- Test notification in settings
+- Service Worker for offline support
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel dashboard
+4. Deploy
+
+### Manual Build
+
+```bash
+npm run build
+npm run start
+```
+
+## License
+
+MIT
